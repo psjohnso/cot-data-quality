@@ -236,7 +236,7 @@ const S = {
 function Card({ label, children, style }) {
   return (
     <div style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 14, padding: "22px 24px", marginBottom: 20, ...style }}>
-      {label && <div style={{ fontFamily: "var(--font-heading)", fontSize: 10, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-dim)", marginBottom: 14, fontWeight: 700 }}>{label}</div>}
+      {label && <div style={{ fontFamily: "var(--font-heading)", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--text-dim)", marginBottom: 14, fontWeight: 700 }}>{label}</div>}
       {children}
     </div>
   );
@@ -265,13 +265,13 @@ function WeightBar({ name, weight, rank, maxWeight }) {
         width: 26, height: 26, borderRadius: 8,
         background: rank === 1 ? "var(--gold)" : rank === 2 ? "var(--silver)" : "var(--badge-bg)",
         display: "flex", alignItems: "center", justifyContent: "center",
-        fontFamily: "var(--font-heading)", fontSize: 12, fontWeight: 700,
+        fontFamily: "var(--font-heading)", fontSize: 14, fontWeight: 700,
         color: rank <= 2 ? "#fff" : "var(--text-dim)",
       }}>{rank}</div>
       <div style={{ flex: 1 }}>
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-          <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 14, color: "var(--text)" }}>{name}</span>
-          <span style={{ fontFamily: "var(--font-heading)", fontSize: 13, fontWeight: 600, color: "var(--accent-left)" }}>{(weight * 100).toFixed(1)}%</span>
+          <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 16, color: "var(--text)" }}>{name}</span>
+          <span style={{ fontFamily: "var(--font-heading)", fontSize: 15, fontWeight: 600, color: "var(--accent-left)" }}>{(weight * 100).toFixed(1)}%</span>
         </div>
         <div style={{ height: 10, borderRadius: 5, background: "var(--bar-track)", overflow: "hidden" }}>
           <div style={{
@@ -293,25 +293,25 @@ function ComparisonSlider({ left, right, value, onChange }) {
     <div style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 14, padding: "20px 24px", marginBottom: 14 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16, gap: 16 }}>
         <div style={{ flex: 1, textAlign: "left", opacity: isL || !isR ? 1 : 0.45, transition: "opacity 0.25s" }}>
-          <div style={{ fontFamily: "var(--font-heading)", fontWeight: 900, fontSize: 15, color: isL ? "var(--accent-left)" : "var(--text)" }}>{left.name}</div>
-          <div style={{ fontSize: 11.5, color: "var(--text-dim)", marginTop: 3, lineHeight: 1.4 }}>{left.desc}</div>
+          <div style={{ fontFamily: "var(--font-heading)", fontWeight: 900, fontSize: 17, color: isL ? "var(--accent-left)" : "var(--text)" }}>{left.name}</div>
+          <div style={{ fontSize: 13.5, color: "var(--text-dim)", marginTop: 3, lineHeight: 1.4 }}>{left.desc}</div>
         </div>
-        <div style={{ fontFamily: "var(--font-heading)", fontSize: 11, color: "var(--text-dim)", background: "var(--badge-bg)", borderRadius: 6, padding: "3px 8px", flexShrink: 0 }}>vs</div>
+        <div style={{ fontFamily: "var(--font-heading)", fontSize: 13, color: "var(--text-dim)", background: "var(--badge-bg)", borderRadius: 6, padding: "3px 8px", flexShrink: 0 }}>vs</div>
         <div style={{ flex: 1, textAlign: "right", opacity: isR || !isL ? 1 : 0.45, transition: "opacity 0.25s" }}>
-          <div style={{ fontFamily: "var(--font-heading)", fontWeight: 900, fontSize: 15, color: isR ? "var(--accent-right)" : "var(--text)" }}>{right.name}</div>
-          <div style={{ fontSize: 11.5, color: "var(--text-dim)", marginTop: 3, lineHeight: 1.4 }}>{right.desc}</div>
+          <div style={{ fontFamily: "var(--font-heading)", fontWeight: 900, fontSize: 17, color: isR ? "var(--accent-right)" : "var(--text)" }}>{right.name}</div>
+          <div style={{ fontSize: 13.5, color: "var(--text-dim)", marginTop: 3, lineHeight: 1.4 }}>{right.desc}</div>
         </div>
       </div>
       <input type="range" min={0} max={8} step={1} value={idx}
         onChange={e => onChange(SAATY_SCALE[+e.target.value].value)}
         style={{ width: "100%", accentColor: isL ? "var(--accent-left)" : isR ? "var(--accent-right)" : "var(--accent-equal)" }}
       />
-      <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "var(--font-heading)", fontSize: 10, color: "var(--text-dim)", marginTop: 4, userSelect: "none" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "var(--font-heading)", fontSize: 12, color: "var(--text-dim)", marginTop: 4, userSelect: "none" }}>
         {SAATY_SCALE.map((s, i) => (
           <span key={i} style={{ width: 20, textAlign: "center", color: i === idx ? (isL ? "var(--accent-left)" : isR ? "var(--accent-right)" : "var(--accent-equal)") : undefined, fontWeight: i === idx ? 700 : 400 }}>{s.label}</span>
         ))}
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10, color: "var(--text-dim)", marginTop: 2, fontFamily: "var(--font-body)" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12, color: "var(--text-dim)", marginTop: 2, fontFamily: "var(--font-body)" }}>
         <span style={{ color: "var(--accent-left)", opacity: 0.7 }}>← {left.name}</span>
         <span style={{ opacity: 0.5 }}>Equal</span>
         <span style={{ color: "var(--accent-right)", opacity: 0.7 }}>{right.name} →</span>
@@ -396,7 +396,7 @@ function AdminDashboard({ onBack }) {
   if (!auth) return (
     <div style={{ animation: "fadeUp 0.4s ease" }}>
       <Card label="Admin Access Required">
-        <p style={{ fontSize: 13, color: "var(--text-dim)", marginBottom: 16, lineHeight: 1.6 }}>
+        <p style={{ fontSize: 15, color: "var(--text-dim)", marginBottom: 16, lineHeight: 1.6 }}>
           Enter the admin passcode to manage the session and reveal results.
         </p>
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
@@ -405,13 +405,13 @@ function AdminDashboard({ onBack }) {
             onKeyDown={e => { if (e.key === "Enter") login(); }}
             style={{
               flex: 1, background: "var(--input-bg)", borderRadius: 10, padding: "12px 16px",
-              color: "var(--text)", fontSize: 15, outline: "none", fontFamily: "var(--font-body)",
+              color: "var(--text)", fontSize: 17, outline: "none", fontFamily: "var(--font-body)",
               border: `1px solid ${passErr ? "rgba(255,80,80,0.6)" : "var(--border)"}`,
             }}
           />
           <Btn primary onClick={login}>Unlock</Btn>
         </div>
-        {passErr && <div style={{ fontSize: 12, color: "#C24200", marginTop: 10 }}>Incorrect passcode.</div>}
+        {passErr && <div style={{ fontSize: 14, color: "#C24200", marginTop: 10 }}>Incorrect passcode.</div>}
         <div style={{ marginTop: 16 }}><Btn onClick={onBack}>← Back to Survey</Btn></div>
       </Card>
     </div>
@@ -422,7 +422,7 @@ function AdminDashboard({ onBack }) {
     <div style={{ animation: "fadeUp 0.4s ease" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
         <Btn onClick={onBack}>← Back to Survey</Btn>
-        <Btn onClick={refresh} style={{ fontSize: 12 }}>↻ Refresh</Btn>
+        <Btn onClick={refresh} style={{ fontSize: 14 }}>↻ Refresh</Btn>
       </div>
 
       {loading ? (
@@ -430,9 +430,9 @@ function AdminDashboard({ onBack }) {
       ) : subs.length === 0 ? (
         <Card>
           <div style={{ textAlign: "center", padding: "40px 20px" }}>
-            <div style={{ fontSize: 36, marginBottom: 12 }}>📋</div>
-            <div style={{ fontWeight: 600, fontSize: 16, marginBottom: 6, color: "var(--text)" }}>No submissions yet</div>
-            <div style={{ fontSize: 13, color: "var(--text-dim)" }}>Waiting for participants to complete their comparisons.</div>
+            <div style={{ fontSize: 38, marginBottom: 12 }}>📋</div>
+            <div style={{ fontWeight: 600, fontSize: 18, marginBottom: 6, color: "var(--text)" }}>No submissions yet</div>
+            <div style={{ fontSize: 15, color: "var(--text-dim)" }}>Waiting for participants to complete their comparisons.</div>
           </div>
         </Card>
       ) : (
@@ -445,8 +445,8 @@ function AdminDashboard({ onBack }) {
               ["Status", revealed ? "Revealed" : "Hidden", revealed ? "#83AC16" : "var(--accent-right)"],
             ].map(([label, val, color]) => (
               <div key={label} style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 12, padding: 16, textAlign: "center" }}>
-                <div style={{ fontFamily: "var(--font-heading)", fontSize: 10, color: "var(--text-dim)", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.08em" }}>{label}</div>
-                <div style={{ fontFamily: "var(--font-heading)", fontSize: 22, fontWeight: 700, color }}>{val}</div>
+                <div style={{ fontFamily: "var(--font-heading)", fontSize: 12, color: "var(--text-dim)", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.08em" }}>{label}</div>
+                <div style={{ fontFamily: "var(--font-heading)", fontSize: 24, fontWeight: 700, color }}>{val}</div>
               </div>
             ))}
           </div>
@@ -458,7 +458,7 @@ function AdminDashboard({ onBack }) {
           }}>
             {!revealed ? (
               <div style={{ textAlign: "center", padding: "16px 0" }}>
-                <div style={{ fontSize: 13, color: "var(--text-dim)", marginBottom: 16, lineHeight: 1.6 }}>
+                <div style={{ fontSize: 15, color: "var(--text-dim)", marginBottom: 16, lineHeight: 1.6 }}>
                   <strong>{subs.length} participant{subs.length !== 1 ? "s" : ""}</strong> submitted.
                   {predictions.length > 0 && <> <strong>{predictions.length}</strong> made predictions.</>}
                   {" "}Results are currently hidden from participants.
@@ -466,24 +466,24 @@ function AdminDashboard({ onBack }) {
                 <button onClick={handleReveal} style={{
                   background: "linear-gradient(135deg, var(--accent-left), var(--accent-right))",
                   border: "none", borderRadius: 14, padding: "18px 48px",
-                  color: "#fff", fontWeight: 700, fontSize: 18, cursor: "pointer",
+                  color: "#fff", fontWeight: 700, fontSize: 20, cursor: "pointer",
                   fontFamily: "var(--font-body)", letterSpacing: "-0.02em",
                   boxShadow: "0 4px 24px rgba(0,38,105,0.3)",
                   transition: "transform 0.2s, box-shadow 0.2s",
                 }}>
                   Reveal Results
                 </button>
-                <div style={{ fontSize: 11, color: "var(--text-dim)", marginTop: 12 }}>
+                <div style={{ fontSize: 13, color: "var(--text-dim)", marginTop: 12 }}>
                   This will unlock results for all participants simultaneously.
                 </div>
               </div>
             ) : (
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div>
-                  <div style={{ fontWeight: 700, fontSize: 14, color: "#83AC16", marginBottom: 3 }}>Results are live</div>
-                  <div style={{ fontSize: 12, color: "var(--text-dim)" }}>All participants can now see the group results.</div>
+                  <div style={{ fontWeight: 700, fontSize: 16, color: "#83AC16", marginBottom: 3 }}>Results are live</div>
+                  <div style={{ fontSize: 14, color: "var(--text-dim)" }}>All participants can now see the group results.</div>
                 </div>
-                <Btn onClick={handleHideResults} style={{ fontSize: 12 }}>Hide Again</Btn>
+                <Btn onClick={handleHideResults} style={{ fontSize: 14 }}>Hide Again</Btn>
               </div>
             )}
           </Card>
@@ -497,13 +497,13 @@ function AdminDashboard({ onBack }) {
                 padding: "32px 28px",
               }}>
                 <div style={{ textAlign: "center", marginBottom: 20 }}>
-                  <div style={{ fontSize: 14, color: "var(--text-dim)", marginBottom: 6, fontFamily: "var(--font-heading)", textTransform: "uppercase", letterSpacing: "0.1em" }}>The group's #1 priority is</div>
+                  <div style={{ fontSize: 16, color: "var(--text-dim)", marginBottom: 6, fontFamily: "var(--font-heading)", textTransform: "uppercase", letterSpacing: "0.1em" }}>The group's #1 priority is</div>
                   <div style={{
-                    fontSize: 36, fontWeight: 900, letterSpacing: "-0.02em", fontFamily: "var(--font-heading)",
+                    fontSize: 38, fontWeight: 900, letterSpacing: "-0.02em", fontFamily: "var(--font-heading)",
                     color: "#002669",
                     animation: "fadeUp 0.8s ease",
                   }}>{aggregated[0].name}</div>
-                  <div style={{ fontFamily: "var(--font-heading)", fontSize: 16, color: "var(--accent-left)", marginTop: 4 }}>
+                  <div style={{ fontFamily: "var(--font-heading)", fontSize: 18, color: "var(--accent-left)", marginTop: 4 }}>
                     {(aggregated[0].weight * 100).toFixed(1)}%
                   </div>
                 </div>
@@ -515,10 +515,10 @@ function AdminDashboard({ onBack }) {
           {revealed && predictions.length > 0 && (
             <Card label="Prediction Game Results">
               <div style={{ marginBottom: 14 }}>
-                <span style={{ fontWeight: 600, fontSize: 14, color: "var(--text)" }}>
+                <span style={{ fontWeight: 600, fontSize: 16, color: "var(--text)" }}>
                   {correctPredictions.length} of {predictions.length} predicted correctly!
                 </span>
-                <span style={{ fontSize: 13, color: "var(--text-dim)", marginLeft: 8 }}>
+                <span style={{ fontSize: 15, color: "var(--text-dim)", marginLeft: 8 }}>
                   (The #1 was <strong style={{ color: "var(--accent-left)" }}>{aggregated?.[0]?.name}</strong>)
                 </span>
               </div>
@@ -533,10 +533,10 @@ function AdminDashboard({ onBack }) {
                       border: `1px solid ${correct ? "rgba(131,172,22,0.3)" : "var(--border)"}`,
                       borderRadius: 10, padding: "8px 14px",
                     }}>
-                      <span style={{ fontSize: 16 }}>{correct ? "🎯" : "❌"}</span>
+                      <span style={{ fontSize: 18 }}>{correct ? "🎯" : "❌"}</span>
                       <div>
-                        <div style={{ fontWeight: 600, fontSize: 12, color: correct ? "#83AC16" : "var(--text)" }}>{s.name}</div>
-                        <div style={{ fontFamily: "var(--font-heading)", fontSize: 10, color: "var(--text-dim)" }}>picked {predName}</div>
+                        <div style={{ fontWeight: 600, fontSize: 14, color: correct ? "#83AC16" : "var(--text)" }}>{s.name}</div>
+                        <div style={{ fontFamily: "var(--font-heading)", fontSize: 12, color: "var(--text-dim)" }}>picked {predName}</div>
                       </div>
                     </div>
                   );
@@ -551,7 +551,7 @@ function AdminDashboard({ onBack }) {
               {aggregated.map(d => (
                 <WeightBar key={d.id} name={d.name} weight={d.weight} rank={d.rank} maxWeight={aggregated[0].weight} />
               ))}
-              <div style={{ fontSize: 11, color: "var(--text-dim)", marginTop: 10, lineHeight: 1.6 }}>
+              <div style={{ fontSize: 13, color: "var(--text-dim)", marginTop: 10, lineHeight: 1.6 }}>
                 Aggregated via geometric mean of individual priority vectors (Saaty & Peniwati, 2008).
               </div>
             </Card>
@@ -560,16 +560,16 @@ function AdminDashboard({ onBack }) {
           {/* ══ INDIVIDUAL TABLE ══ */}
           <Card label="Individual Weight Breakdown">
             <div style={{ overflowX: "auto" }}>
-              <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: "var(--font-heading)", fontSize: 12 }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: "var(--font-heading)", fontSize: 14 }}>
                 <thead>
                   <tr>
-                    <th style={{ textAlign: "left", padding: "8px 10px", borderBottom: "1px solid var(--border)", color: "var(--text-dim)", fontWeight: 500, fontSize: 10, textTransform: "uppercase" }}>Participant</th>
+                    <th style={{ textAlign: "left", padding: "8px 10px", borderBottom: "1px solid var(--border)", color: "var(--text-dim)", fontWeight: 500, fontSize: 12, textTransform: "uppercase" }}>Participant</th>
                     {DEFAULT_DIMENSIONS.map(d => (
-                      <th key={d.id} style={{ textAlign: "center", padding: "8px 4px", borderBottom: "1px solid var(--border)", color: "var(--text-dim)", fontWeight: 500, fontSize: 9, textTransform: "uppercase", minWidth: 48 }}>
+                      <th key={d.id} style={{ textAlign: "center", padding: "8px 4px", borderBottom: "1px solid var(--border)", color: "var(--text-dim)", fontWeight: 500, fontSize: 11, textTransform: "uppercase", minWidth: 48 }}>
                         {d.name.slice(0, 5)}
                       </th>
                     ))}
-                    <th style={{ textAlign: "center", padding: "8px 4px", borderBottom: "1px solid var(--border)", color: "var(--text-dim)", fontWeight: 500, fontSize: 10 }}>CR</th>
+                    <th style={{ textAlign: "center", padding: "8px 4px", borderBottom: "1px solid var(--border)", color: "var(--text-dim)", fontWeight: 500, fontSize: 12 }}>CR</th>
                     <th style={{ width: 32, borderBottom: "1px solid var(--border)" }}></th>
                   </tr>
                 </thead>
@@ -579,12 +579,12 @@ function AdminDashboard({ onBack }) {
                     return (
                       <tr key={sub.id} style={{ cursor: "pointer" }}
                         onClick={() => setExpandedId(expandedId === sub.id ? null : sub.id)}>
-                        <td style={{ padding: "10px 10px", borderBottom: "1px solid var(--border)", fontWeight: 600, fontSize: 12 }}>
+                        <td style={{ padding: "10px 10px", borderBottom: "1px solid var(--border)", fontWeight: 600, fontSize: 14 }}>
                           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                             <div style={{ width: 8, height: 8, borderRadius: 2, background: COLORS[si % COLORS.length] }} />
                             {sub.name}
                             {sub.prediction && sub.prediction === winnerDimId && revealed && (
-                              <span title="Predicted correctly" style={{ fontSize: 12 }}>🎯</span>
+                              <span title="Predicted correctly" style={{ fontSize: 14 }}>🎯</span>
                             )}
                           </div>
                         </td>
@@ -606,7 +606,7 @@ function AdminDashboard({ onBack }) {
                         }}>{((sub.CR || 0) * 100).toFixed(1)}%</td>
                         <td style={{ textAlign: "center", padding: "10px 2px", borderBottom: "1px solid var(--border)" }}>
                           <button onClick={e => { e.stopPropagation(); handleDelete(sub.id); }}
-                            style={{ background: "none", border: "none", cursor: "pointer", color: "var(--text-dim)", fontSize: 14, padding: 2, lineHeight: 1 }}>×</button>
+                            style={{ background: "none", border: "none", cursor: "pointer", color: "var(--text-dim)", fontSize: 16, padding: 2, lineHeight: 1 }}>×</button>
                         </td>
                       </tr>
                     );
@@ -623,11 +623,11 @@ function AdminDashboard({ onBack }) {
               return (
                 <div style={{ marginTop: 16, padding: "16px 18px", background: "var(--input-bg)", borderRadius: 12, animation: "fadeUp 0.3s ease" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 12 }}>
-                    <span style={{ fontWeight: 700, fontSize: 14, color: "var(--text)" }}>{sub.name}'s Results</span>
-                    <span style={{ fontFamily: "var(--font-heading)", fontSize: 10, color: "var(--text-dim)" }}>{new Date(sub.timestamp).toLocaleString()}</span>
+                    <span style={{ fontWeight: 700, fontSize: 16, color: "var(--text)" }}>{sub.name}'s Results</span>
+                    <span style={{ fontFamily: "var(--font-heading)", fontSize: 12, color: "var(--text-dim)" }}>{new Date(sub.timestamp).toLocaleString()}</span>
                   </div>
                   {sub.prediction && (
-                    <div style={{ fontSize: 12, color: "var(--text-dim)", marginBottom: 10 }}>
+                    <div style={{ fontSize: 14, color: "var(--text-dim)", marginBottom: 10 }}>
                       Predicted #1: <strong style={{ color: "var(--accent-left)" }}>{DEFAULT_DIMENSIONS.find(d => d.id === sub.prediction)?.name}</strong>
                       {revealed && (sub.prediction === winnerDimId ? <span style={{ color: "#83AC16", marginLeft: 6 }}>✓ Correct!</span> : <span style={{ color: "#C24200", marginLeft: 6 }}>✗ Incorrect</span>)}
                     </div>
@@ -636,8 +636,8 @@ function AdminDashboard({ onBack }) {
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginTop: 12 }}>
                     {[["λ max", sub.lambdaMax?.toFixed(4)], ["CI", sub.CI?.toFixed(4)], ["CR", ((sub.CR || 0) * 100).toFixed(2) + "%"]].map(([l, v]) => (
                       <div key={l} style={{ background: "var(--badge-bg)", borderRadius: 8, padding: "8px 10px", textAlign: "center" }}>
-                        <div style={{ fontFamily: "var(--font-heading)", fontSize: 9, color: "var(--text-dim)" }}>{l}</div>
-                        <div style={{ fontFamily: "var(--font-heading)", fontSize: 14, fontWeight: 700, color: "var(--text)" }}>{v}</div>
+                        <div style={{ fontFamily: "var(--font-heading)", fontSize: 11, color: "var(--text-dim)" }}>{l}</div>
+                        <div style={{ fontFamily: "var(--font-heading)", fontSize: 16, fontWeight: 700, color: "var(--text)" }}>{v}</div>
                       </div>
                     ))}
                   </div>
@@ -653,15 +653,15 @@ function AdminDashboard({ onBack }) {
               const maxW = Math.max(...vals.map(v => v.w), 0.01);
               return (
                 <div key={dim.id} style={{ marginBottom: 16 }}>
-                  <div style={{ fontWeight: 600, fontSize: 13, color: "var(--text)", marginBottom: 6 }}>{dim.name}</div>
+                  <div style={{ fontWeight: 600, fontSize: 15, color: "var(--text)", marginBottom: 6 }}>{dim.name}</div>
                   {vals.map((v, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 3 }}>
                       <div style={{ width: 8, height: 8, borderRadius: 2, background: COLORS[i % COLORS.length] }} />
-                      <span style={{ fontFamily: "var(--font-heading)", fontSize: 10, color: "var(--text-dim)", width: 70, flexShrink: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{v.name}</span>
+                      <span style={{ fontFamily: "var(--font-heading)", fontSize: 12, color: "var(--text-dim)", width: 70, flexShrink: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{v.name}</span>
                       <div style={{ flex: 1, height: 6, borderRadius: 3, background: "var(--bar-track)", overflow: "hidden" }}>
                         <div style={{ height: "100%", borderRadius: 3, width: `${(v.w / maxW) * 100}%`, background: COLORS[i % COLORS.length], transition: "width 0.5s ease" }} />
                       </div>
-                      <span style={{ fontFamily: "var(--font-heading)", fontSize: 10, color: "var(--text-dim)", width: 40, textAlign: "right" }}>{(v.w * 100).toFixed(1)}%</span>
+                      <span style={{ fontFamily: "var(--font-heading)", fontSize: 12, color: "var(--text-dim)", width: 40, textAlign: "right" }}>{(v.w * 100).toFixed(1)}%</span>
                     </div>
                   ))}
                 </div>
@@ -680,12 +680,12 @@ function AdminDashboard({ onBack }) {
                     <input type="password" placeholder="New passcode (min 4 chars)" value={newPass}
                       onChange={e => { setNewPass(e.target.value); setPassMsg(""); }}
                       onKeyDown={e => { if (e.key === "Enter") handleChangePass(); }}
-                      style={{ flex: "1 1 180px", background: "var(--input-bg)", border: "1px solid var(--border)", borderRadius: 8, padding: "8px 12px", color: "var(--text)", fontSize: 13, outline: "none", fontFamily: "var(--font-body)" }}
+                      style={{ flex: "1 1 180px", background: "var(--input-bg)", border: "1px solid var(--border)", borderRadius: 8, padding: "8px 12px", color: "var(--text)", fontSize: 15, outline: "none", fontFamily: "var(--font-body)" }}
                     />
-                    <Btn primary onClick={handleChangePass} style={{ padding: "8px 16px", fontSize: 12 }}>Save</Btn>
-                    <Btn onClick={() => { setShowChangePass(false); setNewPass(""); setPassMsg(""); }} style={{ fontSize: 12 }}>Cancel</Btn>
+                    <Btn primary onClick={handleChangePass} style={{ padding: "8px 16px", fontSize: 14 }}>Save</Btn>
+                    <Btn onClick={() => { setShowChangePass(false); setNewPass(""); setPassMsg(""); }} style={{ fontSize: 14 }}>Cancel</Btn>
                   </div>
-                  {passMsg && <div style={{ fontSize: 12, color: passMsg.includes("updated") ? "#83AC16" : "#C24200" }}>{passMsg}</div>}
+                  {passMsg && <div style={{ fontSize: 14, color: passMsg.includes("updated") ? "#83AC16" : "#C24200" }}>{passMsg}</div>}
                 </div>
               )}
             </div>
@@ -694,7 +694,7 @@ function AdminDashboard({ onBack }) {
                 <Btn danger onClick={() => setConfirmClear(true)}>Clear All Submissions & Reset</Btn>
               ) : (
                 <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-                  <span style={{ fontSize: 13, color: "#C24200" }}>This clears all data and hides results. Cannot be undone.</span>
+                  <span style={{ fontSize: 15, color: "#C24200" }}>This clears all data and hides results. Cannot be undone.</span>
                   <Btn danger onClick={handleClearAll}>Yes, clear all</Btn>
                   <Btn onClick={() => setConfirmClear(false)}>Cancel</Btn>
                 </div>
@@ -873,7 +873,7 @@ function Presentation() {
 
   const badge = slide.badge && (
     <div style={{
-      fontFamily: "var(--font-heading)", fontSize: 10, textTransform: "uppercase",
+      fontFamily: "var(--font-heading)", fontSize: 12, textTransform: "uppercase",
       letterSpacing: "0.1em", color: "var(--accent-left)", marginBottom: 12, fontWeight: 600,
     }}>{slide.badge}</div>
   );
@@ -895,11 +895,11 @@ function Presentation() {
       }}>
         {badge}
         <div style={{
-          fontSize: 36, fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: 16,
+          fontSize: 38, fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: 16,
           fontFamily: "var(--font-heading)", color: "#002669",
         }}>{slide.title}</div>
         <div style={{
-          fontSize: 15, color: "var(--text-dim)", lineHeight: 1.7, maxWidth: 500, margin: "0 auto",
+          fontSize: 17, color: "var(--text-dim)", lineHeight: 1.7, maxWidth: 500, margin: "0 auto",
           whiteSpace: "pre-line",
         }}>{slide.subtitle}</div>
       </Card>
@@ -913,7 +913,7 @@ function Presentation() {
       <Card style={{ padding: "28px 28px" }}>
         {badge}
         {slideTitle}
-        <div style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.75, whiteSpace: "pre-line", opacity: 0.88 }}>
+        <div style={{ fontSize: 16, color: "var(--text)", lineHeight: 1.75, whiteSpace: "pre-line", opacity: 0.88 }}>
           {slide.body}
         </div>
         {slide.callout && (
@@ -922,8 +922,8 @@ function Presentation() {
             background: "rgba(0,38,105,0.06)", border: "1px solid rgba(0,38,105,0.15)",
             display: "flex", alignItems: "flex-start", gap: 14,
           }}>
-            <span style={{ fontSize: 24, flexShrink: 0, lineHeight: 1 }}>{slide.callout.icon}</span>
-            <div style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.65, fontWeight: 500 }}>{slide.callout.text}</div>
+            <span style={{ fontSize: 26, flexShrink: 0, lineHeight: 1 }}>{slide.callout.icon}</span>
+            <div style={{ fontSize: 16, color: "var(--text)", lineHeight: 1.65, fontWeight: 500 }}>{slide.callout.text}</div>
           </div>
         )}
       </Card>
@@ -937,7 +937,7 @@ function Presentation() {
       <Card style={{ padding: "28px 28px" }}>
         {badge}
         {slideTitle}
-        <div style={{ fontSize: 13, color: "var(--text-dim)", lineHeight: 1.6, marginBottom: 20 }}>{slide.intro}</div>
+        <div style={{ fontSize: 15, color: "var(--text-dim)", lineHeight: 1.6, marginBottom: 20 }}>{slide.intro}</div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
           {slide.items.map(item => (
             <div key={item.name} style={{
@@ -945,19 +945,19 @@ function Presentation() {
               borderRadius: 12, padding: "14px 16px", position: "relative",
             }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
-                <span style={{ fontSize: 20 }}>{item.icon}</span>
+                <span style={{ fontSize: 22 }}>{item.icon}</span>
                 <div>
-                  <div style={{ fontWeight: 700, fontSize: 14, color: item.color }}>{item.name}</div>
-                  <div style={{ fontFamily: "var(--font-heading)", fontSize: 10, color: "var(--text-dim)" }}>
+                  <div style={{ fontWeight: 700, fontSize: 16, color: item.color }}>{item.name}</div>
+                  <div style={{ fontFamily: "var(--font-heading)", fontSize: 12, color: "var(--text-dim)" }}>
                     Weight: {item.weight}{item.gate && " · Gate ≥ min"}
                   </div>
                 </div>
               </div>
-              <div style={{ fontSize: 12, color: "var(--text)", lineHeight: 1.5, opacity: 0.8 }}>{item.text}</div>
+              <div style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.5, opacity: 0.8 }}>{item.text}</div>
               {item.gate && (
                 <div style={{
                   position: "absolute", top: 10, right: 12,
-                  fontFamily: "var(--font-heading)", fontSize: 8, textTransform: "uppercase",
+                  fontFamily: "var(--font-heading)", fontSize: 10, textTransform: "uppercase",
                   letterSpacing: "0.08em", color: "#C24200", fontWeight: 700,
                   background: "rgba(255,80,80,0.1)", padding: "2px 6px", borderRadius: 4,
                 }}>Gate</div>
@@ -976,12 +976,12 @@ function Presentation() {
       <Card style={{ padding: "28px 28px" }}>
         {badge}
         {slideTitle}
-        <div style={{ fontSize: 13, color: "var(--text-dim)", lineHeight: 1.6, marginBottom: 20 }}>{slide.intro}</div>
+        <div style={{ fontSize: 15, color: "var(--text-dim)", lineHeight: 1.6, marginBottom: 20 }}>{slide.intro}</div>
         <div style={{
           background: "rgba(0,38,105,0.06)", border: "1px solid rgba(0,38,105,0.15)",
           borderRadius: 14, padding: "24px 20px", textAlign: "center", marginBottom: 16,
         }}>
-          <div style={{ fontFamily: "var(--font-heading)", fontSize: 10, color: "var(--text-dim)", marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.08em" }}>Composite Score =</div>
+          <div style={{ fontFamily: "var(--font-heading)", fontSize: 12, color: "var(--text-dim)", marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.08em" }}>Composite Score =</div>
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 6, alignItems: "center" }}>
             {[
               { name: "Stew", w: "0.30", color: "#002669" },
@@ -991,19 +991,19 @@ function Presentation() {
               { name: "Cons", w: "0.10", color: "#0088FF" },
             ].map((d, i) => (
               <div key={d.name} style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                {i > 0 && <span style={{ fontFamily: "var(--font-heading)", fontSize: 14, color: "var(--text-dim)", margin: "0 2px" }}>+</span>}
+                {i > 0 && <span style={{ fontFamily: "var(--font-heading)", fontSize: 16, color: "var(--text-dim)", margin: "0 2px" }}>+</span>}
                 <div style={{
                   background: `${d.color}15`, border: `1px solid ${d.color}30`, borderRadius: 8,
                   padding: "8px 12px", textAlign: "center",
                 }}>
-                  <div style={{ fontFamily: "var(--font-heading)", fontSize: 13, fontWeight: 700, color: d.color }}>{d.name}</div>
-                  <div style={{ fontFamily: "var(--font-heading)", fontSize: 10, color: "var(--text-dim)" }}>× {d.w}</div>
+                  <div style={{ fontFamily: "var(--font-heading)", fontSize: 15, fontWeight: 700, color: d.color }}>{d.name}</div>
+                  <div style={{ fontFamily: "var(--font-heading)", fontSize: 12, color: "var(--text-dim)" }}>× {d.w}</div>
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <div style={{ fontSize: 12.5, color: "var(--text-dim)", lineHeight: 1.6, fontStyle: "italic" }}>{slide.note}</div>
+        <div style={{ fontSize: 14.5, color: "var(--text-dim)", lineHeight: 1.6, fontStyle: "italic" }}>{slide.note}</div>
       </Card>
       {nav}
     </div>
@@ -1015,7 +1015,7 @@ function Presentation() {
       <Card style={{ padding: "28px 28px" }}>
         {badge}
         {slideTitle}
-        <div style={{ fontSize: 13, color: "var(--text-dim)", lineHeight: 1.6, marginBottom: 20 }}>{slide.intro}</div>
+        <div style={{ fontSize: 15, color: "var(--text-dim)", lineHeight: 1.6, marginBottom: 20 }}>{slide.intro}</div>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           {slide.tiers.map(t => (
             <div key={t.name} style={{
@@ -1026,14 +1026,14 @@ function Presentation() {
               <div style={{
                 width: 44, height: 44, borderRadius: 12, flexShrink: 0,
                 background: `${t.color}15`, border: `1px solid ${t.color}25`,
-                display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20,
+                display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22,
               }}>{t.icon}</div>
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 4 }}>
-                  <span style={{ fontWeight: 700, fontSize: 15, color: t.color }}>{t.name}</span>
-                  <span style={{ fontFamily: "var(--font-heading)", fontSize: 11, color: "var(--text-dim)" }}>{t.range}</span>
+                  <span style={{ fontWeight: 700, fontSize: 17, color: t.color }}>{t.name}</span>
+                  <span style={{ fontFamily: "var(--font-heading)", fontSize: 13, color: "var(--text-dim)" }}>{t.range}</span>
                 </div>
-                <div style={{ fontSize: 12.5, color: "var(--text)", lineHeight: 1.55, opacity: 0.8 }}>{t.guidance}</div>
+                <div style={{ fontSize: 14.5, color: "var(--text)", lineHeight: 1.55, opacity: 0.8 }}>{t.guidance}</div>
               </div>
             </div>
           ))}
@@ -1056,10 +1056,10 @@ function Presentation() {
               borderRadius: 12, padding: "18px 16px",
             }}>
               <div style={{
-                fontFamily: "var(--font-heading)", fontSize: 9, textTransform: "uppercase",
+                fontFamily: "var(--font-heading)", fontSize: 11, textTransform: "uppercase",
                 letterSpacing: "0.08em", color: col.color, marginBottom: 4, fontWeight: 700,
               }}>{col.tag}</div>
-              <div style={{ fontWeight: 700, fontSize: 15, color: "var(--text)", marginBottom: 12 }}>{col.label}</div>
+              <div style={{ fontWeight: 700, fontSize: 17, color: "var(--text)", marginBottom: 12 }}>{col.label}</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                 {col.points.map((pt, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
@@ -1067,7 +1067,7 @@ function Presentation() {
                       width: 6, height: 6, borderRadius: 3, flexShrink: 0, marginTop: 6,
                       background: col.color,
                     }} />
-                    <div style={{ fontSize: 12, color: "var(--text)", lineHeight: 1.5, opacity: 0.8 }}>{pt}</div>
+                    <div style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.5, opacity: 0.8 }}>{pt}</div>
                   </div>
                 ))}
               </div>
@@ -1075,7 +1075,7 @@ function Presentation() {
           ))}
         </div>
         <div style={{
-          fontSize: 12.5, color: "var(--text-dim)", lineHeight: 1.6, fontStyle: "italic",
+          fontSize: 14.5, color: "var(--text-dim)", lineHeight: 1.6, fontStyle: "italic",
           padding: "12px 16px", background: "var(--input-bg)", borderRadius: 10,
         }}>{slide.note}</div>
       </Card>
@@ -1097,15 +1097,15 @@ function Presentation() {
               border: "1px solid var(--border)",
             }}>
               <div style={{
-                fontFamily: "var(--font-heading)", fontSize: 12, fontWeight: 700,
+                fontFamily: "var(--font-heading)", fontSize: 14, fontWeight: 700,
                 color: "var(--accent-left)", background: "rgba(0,38,105,0.1)",
                 padding: "6px 10px", borderRadius: 8, flexShrink: 0,
               }}>{item.code}</div>
               <div style={{ flex: 1 }}>
-                <div style={{ fontWeight: 600, fontSize: 14, color: "var(--text)", marginBottom: 2 }}>{item.name}</div>
+                <div style={{ fontWeight: 600, fontSize: 16, color: "var(--text)", marginBottom: 2 }}>{item.name}</div>
               </div>
               <div style={{
-                fontFamily: "var(--font-heading)", fontSize: 10, fontWeight: 600,
+                fontFamily: "var(--font-heading)", fontSize: 12, fontWeight: 600,
                 color: item.color, background: `${item.color}15`,
                 padding: "4px 10px", borderRadius: 6,
               }}>{item.status}</div>
@@ -1113,7 +1113,7 @@ function Presentation() {
           ))}
         </div>
         <div style={{
-          fontSize: 14, color: "var(--text)", lineHeight: 1.7, fontWeight: 500,
+          fontSize: 16, color: "var(--text)", lineHeight: 1.7, fontWeight: 500,
           padding: "16px 20px", borderRadius: 12,
           background: "linear-gradient(135deg, rgba(0,38,105,0.06), rgba(194,66,0,0.06))",
           border: "1px solid rgba(0,38,105,0.15)",
@@ -1225,13 +1225,13 @@ function AHPTool() {
         <div style={{ marginBottom: 28, animation: "fadeUp 0.5s ease" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
             <div style={{ width: 8, height: 8, borderRadius: 2, transform: "rotate(45deg)", background: "linear-gradient(135deg, #C24200, #FFDB22)" }} />
-            <span style={{ fontFamily: "var(--font-heading)", fontSize: 10.5, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--text-dim)", fontWeight: 700 }}>City of Tucson · IT Data Program</span>
+            <span style={{ fontFamily: "var(--font-heading)", fontSize: 12.5, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--text-dim)", fontWeight: 700 }}>City of Tucson · IT Data Program</span>
           </div>
           <h1 style={{
-            fontSize: 28, fontWeight: 900, letterSpacing: "-0.02em", margin: 0, lineHeight: 1.2,
+            fontSize: 30, fontWeight: 900, letterSpacing: "-0.02em", margin: 0, lineHeight: 1.2,
             fontFamily: "var(--font-heading)", color: "#002669",
           }}>Data Quality Dimensions</h1>
-          <p style={{ fontSize: 15, color: "var(--text-dim)", marginTop: 8, lineHeight: 1.6, maxWidth: 540 }}>
+          <p style={{ fontSize: 17, color: "var(--text-dim)", marginTop: 8, lineHeight: 1.6, maxWidth: 540 }}>
             Learn about the Data Trust Scorecard, then help us prioritize the quality dimensions that matter most.
           </p>
         </div>
@@ -1243,7 +1243,7 @@ function AHPTool() {
               background: mode === m ? "rgba(0,38,105,0.15)" : "transparent",
               border: mode === m ? "1px solid rgba(0,38,105,0.3)" : "1px solid transparent",
               borderRadius: 8, padding: "8px 20px", cursor: "pointer",
-              fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 13,
+              fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 15,
               color: mode === m ? "var(--accent-left)" : "var(--text-dim)", transition: "all 0.2s",
             }}>{label}</button>
           ))}
@@ -1262,7 +1262,7 @@ function AHPTool() {
                 const active = (map[step] ?? 0) >= i;
                 return (
                   <div key={i} style={{ flex: 1, textAlign: "center", padding: "10px 0", borderBottom: `2px solid ${active ? "var(--accent-left)" : "var(--border)"}`, transition: "border-color 0.3s" }}>
-                    <span style={{ fontFamily: "var(--font-heading)", fontSize: 10, textTransform: "uppercase", letterSpacing: "0.08em", color: active ? "var(--accent-left)" : "var(--text-dim)", fontWeight: active ? 600 : 400 }}>{label}</span>
+                    <span style={{ fontFamily: "var(--font-heading)", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.08em", color: active ? "var(--accent-left)" : "var(--text-dim)", fontWeight: active ? 600 : 400 }}>{label}</span>
                   </div>
                 );
               })}
@@ -1272,14 +1272,14 @@ function AHPTool() {
             {step === "identify" && (
               <div style={{ animation: "fadeUp 0.4s ease" }}>
                 <Card label="Who Are You?">
-                  <p style={{ fontSize: 13, color: "var(--text-dim)", marginBottom: 16, lineHeight: 1.6 }}>
+                  <p style={{ fontSize: 15, color: "var(--text-dim)", marginBottom: 16, lineHeight: 1.6 }}>
                     Enter your name to join the session. We'll walk you through the six dimensions, then you'll make a prediction and compare {pairs.length} pairs.
                   </p>
                   <div style={{ display: "flex", gap: 10 }}>
                     <input placeholder="Your name" value={name}
                       onChange={e => setName(e.target.value)}
                       onKeyDown={e => { if (e.key === "Enter" && name.trim()) { setLearnIdx(0); setStep("learn"); } }}
-                      style={{ flex: 1, background: "var(--input-bg)", border: "1px solid var(--border)", borderRadius: 10, padding: "12px 16px", color: "var(--text)", fontSize: 15, outline: "none", fontFamily: "var(--font-body)" }}
+                      style={{ flex: 1, background: "var(--input-bg)", border: "1px solid var(--border)", borderRadius: 10, padding: "12px 16px", color: "var(--text)", fontSize: 17, outline: "none", fontFamily: "var(--font-body)" }}
                     />
                     <Btn primary disabled={!name.trim()} onClick={() => { setLearnIdx(0); setStep("learn"); }}>Next →</Btn>
                   </div>
@@ -1318,19 +1318,19 @@ function AHPTool() {
                           width: 52, height: 52, borderRadius: 16,
                           background: `${d.color}18`, border: `1.5px solid ${d.color}30`,
                           display: "flex", alignItems: "center", justifyContent: "center",
-                          fontSize: 26,
+                          fontSize: 28,
                         }}>{d.icon}</div>
                         <div>
                           <div style={{
-                            fontFamily: "var(--font-heading)", fontSize: 10, textTransform: "uppercase",
+                            fontFamily: "var(--font-heading)", fontSize: 12, textTransform: "uppercase",
                             letterSpacing: "0.1em", color: "var(--text-dim)", marginBottom: 3,
                           }}>Dimension {learnIdx + 1} of {dims.length}</div>
                           <div style={{
-                            fontSize: 24, fontWeight: 900, fontFamily: "var(--font-heading)", letterSpacing: "-0.02em", color: d.color,
+                            fontSize: 26, fontWeight: 900, fontFamily: "var(--font-heading)", letterSpacing: "-0.02em", color: d.color,
                           }}>{d.name}</div>
                         </div>
                       </div>
-                      <div style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.6 }}>
+                      <div style={{ fontSize: 16, color: "var(--text)", lineHeight: 1.6 }}>
                         {d.desc}
                       </div>
                     </div>
@@ -1339,10 +1339,10 @@ function AHPTool() {
                       {/* Why it matters */}
                       <div style={{ marginBottom: 20 }}>
                         <div style={{
-                          fontFamily: "var(--font-heading)", fontSize: 10, textTransform: "uppercase",
+                          fontFamily: "var(--font-heading)", fontSize: 12, textTransform: "uppercase",
                           letterSpacing: "0.08em", color: d.color, marginBottom: 8, fontWeight: 600,
                         }}>Why It Matters</div>
-                        <div style={{ fontSize: 13.5, color: "var(--text)", lineHeight: 1.7, fontStyle: "italic", opacity: 0.9 }}>
+                        <div style={{ fontSize: 15.5, color: "var(--text)", lineHeight: 1.7, fontStyle: "italic", opacity: 0.9 }}>
                           "{d.why}"
                         </div>
                       </div>
@@ -1355,12 +1355,12 @@ function AHPTool() {
                         }}>
                           <div style={{
                             display: "flex", alignItems: "center", gap: 6, marginBottom: 8,
-                            fontFamily: "var(--font-heading)", fontSize: 10, textTransform: "uppercase",
+                            fontFamily: "var(--font-heading)", fontSize: 12, textTransform: "uppercase",
                             letterSpacing: "0.08em", color: "#83AC16", fontWeight: 600,
                           }}>
-                            <span style={{ fontSize: 14 }}>✓</span> Good Example
+                            <span style={{ fontSize: 16 }}>✓</span> Good Example
                           </div>
-                          <div style={{ fontSize: 12, color: "var(--text)", lineHeight: 1.6, opacity: 0.85 }}>
+                          <div style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.6, opacity: 0.85 }}>
                             {d.good}
                           </div>
                         </div>
@@ -1370,12 +1370,12 @@ function AHPTool() {
                         }}>
                           <div style={{
                             display: "flex", alignItems: "center", gap: 6, marginBottom: 8,
-                            fontFamily: "var(--font-heading)", fontSize: 10, textTransform: "uppercase",
+                            fontFamily: "var(--font-heading)", fontSize: 12, textTransform: "uppercase",
                             letterSpacing: "0.08em", color: "#C24200", fontWeight: 600,
                           }}>
-                            <span style={{ fontSize: 14 }}>✗</span> What Goes Wrong
+                            <span style={{ fontSize: 16 }}>✗</span> What Goes Wrong
                           </div>
-                          <div style={{ fontSize: 12, color: "var(--text)", lineHeight: 1.6, opacity: 0.85 }}>
+                          <div style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.6, opacity: 0.85 }}>
                             {d.bad}
                           </div>
                         </div>
@@ -1384,7 +1384,7 @@ function AHPTool() {
                       {/* Practical examples */}
                       <div style={{ marginBottom: 4 }}>
                         <div style={{
-                          fontFamily: "var(--font-heading)", fontSize: 10, textTransform: "uppercase",
+                          fontFamily: "var(--font-heading)", fontSize: 12, textTransform: "uppercase",
                           letterSpacing: "0.08em", color: "var(--text-dim)", marginBottom: 10, fontWeight: 500,
                         }}>In Practice</div>
                         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -1397,10 +1397,10 @@ function AHPTool() {
                                 width: 20, height: 20, borderRadius: 6, flexShrink: 0,
                                 background: `${d.color}18`, border: `1px solid ${d.color}25`,
                                 display: "flex", alignItems: "center", justifyContent: "center",
-                                fontFamily: "var(--font-heading)", fontSize: 10, fontWeight: 700, color: d.color,
+                                fontFamily: "var(--font-heading)", fontSize: 12, fontWeight: 700, color: d.color,
                                 marginTop: 1,
                               }}>{i + 1}</div>
-                              <div style={{ fontSize: 12.5, color: "var(--text)", lineHeight: 1.5, opacity: 0.85 }}>
+                              <div style={{ fontSize: 14.5, color: "var(--text)", lineHeight: 1.5, opacity: 0.85 }}>
                                 {ex}
                               </div>
                             </div>
@@ -1433,7 +1433,7 @@ function AHPTool() {
             {step === "predict" && (
               <div style={{ animation: "fadeUp 0.4s ease" }}>
                 <Card label="Make Your Prediction">
-                  <p style={{ fontSize: 13, color: "var(--text-dim)", marginBottom: 16, lineHeight: 1.6 }}>
+                  <p style={{ fontSize: 15, color: "var(--text-dim)", marginBottom: 16, lineHeight: 1.6 }}>
                     Now that you know the dimensions: which one do you think the <strong>group</strong> will rank as #1?
                   </p>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 20 }}>
@@ -1447,8 +1447,8 @@ function AHPTool() {
                         }}>
                           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                              <span style={{ fontSize: 18 }}>{d.icon}</span>
-                              <span style={{ fontWeight: 600, fontSize: 13.5, color: sel ? d.color : "var(--text)" }}>{d.name}</span>
+                              <span style={{ fontSize: 20 }}>{d.icon}</span>
+                              <span style={{ fontWeight: 600, fontSize: 15.5, color: sel ? d.color : "var(--text)" }}>{d.name}</span>
                             </div>
                             <div style={{
                               width: 18, height: 18, borderRadius: 10,
@@ -1459,7 +1459,7 @@ function AHPTool() {
                               {sel && <div style={{ width: 6, height: 6, borderRadius: 3, background: "#fff" }} />}
                             </div>
                           </div>
-                          <div style={{ fontSize: 11, color: "var(--text-dim)", marginTop: 5, lineHeight: 1.4 }}>{d.desc}</div>
+                          <div style={{ fontSize: 13, color: "var(--text-dim)", marginTop: 5, lineHeight: 1.4 }}>{d.desc}</div>
                         </button>
                       );
                     })}
@@ -1477,15 +1477,15 @@ function AHPTool() {
               <div style={{ animation: "fadeUp 0.4s ease" }}>
                 <div style={{ marginBottom: 20 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
-                    <span style={{ fontFamily: "var(--font-heading)", fontSize: 11, color: "var(--text-dim)" }}>{name} · Progress</span>
-                    <span style={{ fontFamily: "var(--font-heading)", fontSize: 11, color: "var(--accent-left)" }}>{completedCount} / {totalPairs}</span>
+                    <span style={{ fontFamily: "var(--font-heading)", fontSize: 13, color: "var(--text-dim)" }}>{name} · Progress</span>
+                    <span style={{ fontFamily: "var(--font-heading)", fontSize: 13, color: "var(--accent-left)" }}>{completedCount} / {totalPairs}</span>
                   </div>
                   <div style={{ height: 4, borderRadius: 2, background: "var(--bar-track)", overflow: "hidden" }}>
                     <div style={{ height: "100%", borderRadius: 2, width: `${(completedCount / totalPairs) * 100}%`, background: "linear-gradient(90deg, var(--accent-left), var(--accent-right))", transition: "width 0.4s ease" }} />
                   </div>
                 </div>
 
-                <p style={{ fontSize: 12.5, color: "var(--text-dim)", marginBottom: 16, lineHeight: 1.5 }}>
+                <p style={{ fontSize: 14.5, color: "var(--text-dim)", marginBottom: 16, lineHeight: 1.5 }}>
                   For each pair, slide toward the dimension you consider more important. Scale: 1 (equal) to 9 (extreme).
                 </p>
 
@@ -1513,22 +1513,22 @@ function AHPTool() {
                     }}>
                       <div style={{ width: 24, height: 24, border: "3px solid var(--accent-left)", borderTopColor: "transparent", borderRadius: "50%", animation: "spin 1s linear infinite" }} />
                     </div>
-                    <div style={{ fontWeight: 700, fontSize: 20, marginBottom: 8, color: "var(--text)" }}>
+                    <div style={{ fontWeight: 700, fontSize: 22, marginBottom: 8, color: "var(--text)" }}>
                       Thanks, {name}!
                     </div>
-                    <div style={{ fontSize: 14, color: "var(--text-dim)", lineHeight: 1.6, maxWidth: 400, margin: "0 auto", marginBottom: 16 }}>
+                    <div style={{ fontSize: 16, color: "var(--text-dim)", lineHeight: 1.6, maxWidth: 400, margin: "0 auto", marginBottom: 16 }}>
                       Your response is saved. Waiting for the facilitator to reveal the group results...
                     </div>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
                       <div style={{ width: 6, height: 6, borderRadius: 3, background: "var(--accent-left)", animation: "pulse 1.5s ease infinite" }} />
-                      <span style={{ fontFamily: "var(--font-heading)", fontSize: 11, color: "var(--text-dim)" }}>
+                      <span style={{ fontFamily: "var(--font-heading)", fontSize: 13, color: "var(--text-dim)" }}>
                         Listening for reveal...
                       </span>
                     </div>
                     {prediction && (
                       <div style={{ marginTop: 20, padding: "12px 16px", background: "var(--input-bg)", borderRadius: 10, display: "inline-block" }}>
-                        <span style={{ fontSize: 12, color: "var(--text-dim)" }}>Your prediction: </span>
-                        <strong style={{ color: "var(--accent-left)", fontSize: 13 }}>{dims.find(d => d.id === prediction)?.name}</strong>
+                        <span style={{ fontSize: 14, color: "var(--text-dim)" }}>Your prediction: </span>
+                        <strong style={{ color: "var(--accent-left)", fontSize: 15 }}>{dims.find(d => d.id === prediction)?.name}</strong>
                       </div>
                     )}
                   </div>
@@ -1545,12 +1545,12 @@ function AHPTool() {
                   borderColor: "rgba(0,38,105,0.25)", padding: "32px 28px",
                 }}>
                   <div style={{ textAlign: "center", marginBottom: 4 }}>
-                    <div style={{ fontSize: 13, color: "var(--text-dim)", marginBottom: 6, fontFamily: "var(--font-heading)", textTransform: "uppercase", letterSpacing: "0.1em" }}>The group's #1 priority is</div>
+                    <div style={{ fontSize: 15, color: "var(--text-dim)", marginBottom: 6, fontFamily: "var(--font-heading)", textTransform: "uppercase", letterSpacing: "0.1em" }}>The group's #1 priority is</div>
                     <div style={{
-                      fontSize: 36, fontWeight: 900, letterSpacing: "-0.02em", fontFamily: "var(--font-heading)",
+                      fontSize: 38, fontWeight: 900, letterSpacing: "-0.02em", fontFamily: "var(--font-heading)",
                       color: "#002669",
                     }}>{groupResults[0].name}</div>
-                    <div style={{ fontFamily: "var(--font-heading)", fontSize: 16, color: "var(--accent-left)", marginTop: 4 }}>
+                    <div style={{ fontFamily: "var(--font-heading)", fontSize: 18, color: "var(--accent-left)", marginTop: 4 }}>
                       {(groupResults[0].weight * 100).toFixed(1)}%
                     </div>
                   </div>
@@ -1562,15 +1562,15 @@ function AHPTool() {
                     <div style={{ textAlign: "center", padding: "12px 0" }}>
                       {prediction === groupResults[0].id ? (
                         <>
-                          <div style={{ fontSize: 36, marginBottom: 8 }}>🎯</div>
-                          <div style={{ fontWeight: 700, fontSize: 18, color: "#83AC16", marginBottom: 4 }}>You nailed it!</div>
-                          <div style={{ fontSize: 13, color: "var(--text-dim)" }}>You predicted <strong>{dims.find(d => d.id === prediction)?.name}</strong> — and that's exactly what the group chose.</div>
+                          <div style={{ fontSize: 38, marginBottom: 8 }}>🎯</div>
+                          <div style={{ fontWeight: 700, fontSize: 20, color: "#83AC16", marginBottom: 4 }}>You nailed it!</div>
+                          <div style={{ fontSize: 15, color: "var(--text-dim)" }}>You predicted <strong>{dims.find(d => d.id === prediction)?.name}</strong> — and that's exactly what the group chose.</div>
                         </>
                       ) : (
                         <>
-                          <div style={{ fontSize: 36, marginBottom: 8 }}>🤔</div>
-                          <div style={{ fontWeight: 700, fontSize: 18, color: "var(--accent-right)", marginBottom: 4 }}>Not quite!</div>
-                          <div style={{ fontSize: 13, color: "var(--text-dim)" }}>
+                          <div style={{ fontSize: 38, marginBottom: 8 }}>🤔</div>
+                          <div style={{ fontWeight: 700, fontSize: 20, color: "var(--accent-right)", marginBottom: 4 }}>Not quite!</div>
+                          <div style={{ fontSize: 15, color: "var(--text-dim)" }}>
                             You predicted <strong>{dims.find(d => d.id === prediction)?.name}</strong>, but the group went with <strong style={{ color: "var(--accent-left)" }}>{groupResults[0].name}</strong>.
                           </div>
                         </>
@@ -1587,7 +1587,7 @@ function AHPTool() {
                 {/* Your priorities */}
                 <Card label="Your Priority Weights">
                   <div style={{ marginBottom: 8 }}>
-                    <span style={{ fontFamily: "var(--font-heading)", fontSize: 11, color: personalResults.CR <= 0.1 ? "#83AC16" : "#C24200" }}>
+                    <span style={{ fontFamily: "var(--font-heading)", fontSize: 13, color: personalResults.CR <= 0.1 ? "#83AC16" : "#C24200" }}>
                       {personalResults.CR <= 0.1 ? "✓ Consistent" : "⚠ Inconsistent"} (CR: {(personalResults.CR * 100).toFixed(1)}%)
                     </span>
                   </div>
@@ -1605,7 +1605,7 @@ function AHPTool() {
         {/* Footer */}
         <div style={{ marginTop: 40, paddingTop: 16, borderTop: "1px solid var(--border)", textAlign: "center" }}>
           <div style={{ width: 40, height: 3, borderRadius: 2, background: "#C24200", margin: "0 auto 12px" }} />
-          <div style={{ fontFamily: "var(--font-heading)", fontSize: 10, color: "var(--text-dim)", letterSpacing: "0.06em", lineHeight: 1.6, fontWeight: 400 }}>
+          <div style={{ fontFamily: "var(--font-heading)", fontSize: 12, color: "var(--text-dim)", letterSpacing: "0.06em", lineHeight: 1.6, fontWeight: 400 }}>
             City of Tucson · Information Technology · IT Data Program
           </div>
         </div>
